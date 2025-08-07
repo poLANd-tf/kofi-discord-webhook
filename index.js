@@ -1,15 +1,16 @@
-require("dotenv").config()
-const express = require('express')
+import 'dotenv/config'
+import { Filter } from 'bad-words';
+import express from 'express';
 const app = express()
-const bodyParser = require('body-parser');
-const { EmbedBuilder, WebhookClient } = require('discord.js');
+import bodyParser from 'body-parser';
+import { EmbedBuilder, WebhookClient } from 'discord.js';
 const hook = new WebhookClient({ url: process.env["WEBHOOK_URL"] });
 const port = process.env["PORT"] ?? 8070
 const devMode = process.env["DEV_MODE"] ?? false
 const endpoint = process.env["ENDPOINT"] ?? "/webhook-kofi"
+const filter = new Filter();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.post(endpoint, async (req, res) => {
     // console.log(req.body)
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) return res.sendStatus(204)
@@ -35,6 +36,9 @@ app.listen(port, () => {
 
 // Functions
 function sendEmbed(data, date, isPublic, type) {
+    var interName = filter.clean(data.fromName) || "unknown";
+    var interMessage = data.message.replace(/`/g, "");
+    interMessage = filter.clean(interMessage);
     if (isPublic) {
         const embed = new EmbedBuilder()
             .setAuthor({
@@ -43,13 +47,13 @@ function sendEmbed(data, date, isPublic, type) {
             })
             .addFields(
                 {
-                    name: data.from_name,
+                    name: interName,
                     value: "have donated",
                     inline: false
                 },
                 {
                     name: data.amount + " " + data.currency,
-                    value: "`" + data.message + "`" ?? "`-`",
+                    value: "`" + interMessage + "`" ?? "`-`",
                     inline: false
                 },
             )
@@ -71,7 +75,7 @@ function sendEmbed(data, date, isPublic, type) {
             })
             .addFields(
                 {
-                    name: data.from_name,
+                    name: interName,
                     value: "have donated",
                     inline: false
                 },

@@ -1,10 +1,10 @@
-FROM node:lts-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
 
-FROM node:lts-alpine AS deploy
+FROM node:24-alpine AS deploy
 WORKDIR /home/static
 COPY --from=build /usr/src/app/ ./
 RUN adduser -D static; chown -R static /home/static
