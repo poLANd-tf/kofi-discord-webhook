@@ -1,0 +1,21 @@
+{
+  "name": "kofi-discord-webhook",
+  "version": "1.0.0",
+  "description": "Discord webhook for Ko-fi donations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "suprovsky",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "24.2.0",
+    "body-parser": "2.2.0",
+    "discord-webhook-node": "^1.1.8",
+    "discord.js": "^14.21.0",
+    "dotenv": "17.2.1",
+    "express": "5.1.0",
+    "node-fetch": "^3.2.6"
+  }
+}
