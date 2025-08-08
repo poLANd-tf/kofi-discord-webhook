@@ -36,7 +36,8 @@ app.listen(port, () => {
 
 // Functions
 function sendEmbed(data, date, isPublic, type) {
-    var interName = filter.clean(data.fromName) || "unknown";
+    var interName = ""
+    var interName = filter.clean(data.fromName);
     var interMessage = data.message.replace(/`/g, "");
     interMessage = filter.clean(interMessage);
     if (isPublic) {
@@ -47,7 +48,7 @@ function sendEmbed(data, date, isPublic, type) {
             })
             .addFields(
                 {
-                    name: interName,
+                    name: interName ?? "anonymous",
                     value: "have donated",
                     inline: false
                 },
@@ -75,7 +76,7 @@ function sendEmbed(data, date, isPublic, type) {
             })
             .addFields(
                 {
-                    name: interName,
+                    name: interName ?? "anonymous",
                     value: "have donated",
                     inline: false
                 },
