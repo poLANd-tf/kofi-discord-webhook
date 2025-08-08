@@ -37,7 +37,7 @@ app.listen(port, () => {
 // Functions
 function sendEmbed(data, date, isPublic, type) {
     var interName = ""
-    var interName = filter.clean(data.fromName);
+    var interName = filter.clean(data.from_name);
     var interMessage = data.message.replace(/`/g, "");
     interMessage = filter.clean(interMessage);
     if (isPublic) {
