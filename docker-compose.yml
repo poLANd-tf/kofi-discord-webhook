@@ -1,6 +1,6 @@
 services:
   kofi-discord-webhook:
-    image: poland-tf/kofi-discord-webhook:latest
+    image: ghcr.io/poland-tf/kofi-discord-webhook:latest
     restart: unless-stopped
     ports:
       - "127.0.0.1:8070:8070"
