@@ -11,7 +11,7 @@
   "author": "suprovsky",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "24.10.4",
+    "@types/node": "24.10.9",
     "bad-words": "^4.0.0",
     "body-parser": "2.2.1",
     "discord-webhook-node": "^1.1.8",
