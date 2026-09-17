@@ -13,7 +13,7 @@
   "dependencies": {
     "@types/node": "24.12.2",
     "bad-words": "^4.0.0",
-    "body-parser": "2.2.2",
+    "body-parser": "2.3.0",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.25.1",
     "dotenv": "17.4.2",
