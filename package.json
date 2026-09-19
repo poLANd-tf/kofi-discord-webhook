@@ -16,7 +16,7 @@
     "body-parser": "2.3.0",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.25.1",
-    "dotenv": "17.4.2",
+    "dotenv": "18.0.1",
     "express": "5.2.1",
     "node-fetch": "^3.3.2"
   }
